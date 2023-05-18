@@ -3,7 +3,32 @@ import java.util.Arrays;
 public class App {
 
   public static void moveZerosToTheEnd(int[] arr) {
-    
+    int lastIndex = 0;
+    for(int i=0; i<arr.length; i++){
+      if(arr[i] != 0) {
+        //int temp = arr[i];
+        arr[lastIndex] = arr[i];
+        lastIndex++;
+      }
+    }
+    while (lastIndex < arr.length){
+      arr[lastIndex] = 0;
+      lastIndex++;
+    }
+  }
+
+  //not recommended - creating another table
+  public static int[] moveZerosToTheEndWithAnotherTable(int[] arr)
+  {
+    int[] result = new int[arr.length];
+    int lastIndex = 0;
+    for(int i =0; i<arr.length; i++){
+      if(arr[i]!=0){
+        result[lastIndex]=arr[i];
+        lastIndex++;
+      }
+    }
+    return result;
   }
 
   public static void main(String[] args) {
@@ -48,5 +73,17 @@ public class App {
     moveZerosToTheEnd(arr7);
     System.out.println(Arrays.toString(arr7));
     System.out.println();
+
+    System.out.println("Reversing an array - v2");
+    int[] arr8 = new int[] {1, 1, 0, 0, 0, 1, 0};
+    System.out.println(Arrays.toString(arr8));
+    System.out.println(Arrays.toString(moveZerosToTheEndWithAnotherTable(arr8)));
+    System.out.println();
+
+    int[] arr9 = new int[] {5,6,7,0,8,9,0};
+    System.out.println(Arrays.toString(arr9));
+    System.out.println(Arrays.toString(moveZerosToTheEndWithAnotherTable(arr9)));
+    System.out.println();
+
   }
 }
