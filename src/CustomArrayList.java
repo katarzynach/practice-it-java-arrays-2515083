@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class CustomArrayList<D> {
   
   private int size = 0;
@@ -9,10 +11,20 @@ public class CustomArrayList<D> {
   }
 
   public D get(int i) {
-      return null;
+
+    if(i >= size || i < 0) {
+      throw new IndexOutOfBoundsException("Index out of bounds. Array size: " + size + " Given index " + i);
+    }
+    return (D) elements[i];
   }
 
   public void add(D item) {
+    if(size == elements.length){
+      int increasedSize = size * 2;
+      elements = Arrays.copyOf(elements, increasedSize);
+    }
+    elements[size] = item;
+    size++;
 
   }
 
