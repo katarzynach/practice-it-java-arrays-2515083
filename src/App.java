@@ -3,7 +3,13 @@ import java.util.Arrays;
 public class App {
   
   public static Object[] rotateRight(Object[] arr) {
-	  return arr;
+
+    Object[] newArr = new Object[arr.length];
+    for(int i=0; i<arr.length; i++){
+      newArr[(i+1) % arr.length]=arr[i];
+    }
+
+	  return newArr;
   }
   
   public static void main(String args[]) {
